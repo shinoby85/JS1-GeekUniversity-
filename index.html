@@ -67,8 +67,40 @@
             </ol>
             <a class="console-link" href="javascript:task3();">Вывести результат в консоль</a>
         </section>
-        <section class="lesson lesson4 hidden">
-            <h2 class="tasks"></h2>
+        <section class="lesson lesson4">
+            <h2 class="tasks">Задание 4</h2>
+            <p class="text">Напишите, являются ли данные имена переменных корректными:</p>
+            <table cellspacing='0'>
+                <tr>
+                    <th>Выражение</th>
+                    <th>Комментарий</th>
+                </tr>
+                <tr>
+                    <td>let mode = "normal";</td>
+                    <td>Имя переменной имеет допустимый вид</td>
+                </tr>
+                <tr>
+                    <td>let my_valu3 = 102;</td>
+                    <td>Имя переменной имеет допустимый вид, т.к. в имени допускается использование символа _ и цифр 
+                        (если имя переменной не начинается с него)</td>
+                </tr>
+                <tr>
+                    <td>let 3my_value3 = "102";</td>
+                    <td>Имя не допустимо (начинается с цифры)</td>
+                </tr>
+                <tr>
+                    <td>let __hello__ = "world";</td>
+                    <td>Имя допустимо (допускается использование символа _ в любом месте)</td>
+                </tr>
+                <tr>
+                    <td>let $$$ = "money";</td>
+                    <td>Имя допустимо (допускается использование символа $ в любом месте)</td>
+                </tr>
+                <tr>
+                    <td>let !0_world = true;</td>
+                    <td>Имя не допустимо (спец. символ ! не допускается в именах переменных)</td>
+                </tr>
+            </table>
         </section>
         <section class="lesson lesson5 hidden">
             <h2 class="tasks"></h2>

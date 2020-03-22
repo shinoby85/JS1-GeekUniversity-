@@ -83,6 +83,10 @@ label{
 .console-link:active{
     background-color: green;
 }
+table,tr,th,td{
+    border: 1px solid #000;
+    
+}
 
 
 
