@@ -6,7 +6,6 @@ body{
     background-image: url(../img/bg_img.jpg);
 }
 .container{
-    border: 1px solid #000;
     width: 1100px;
     margin: 0 auto;
     height: 100%;
