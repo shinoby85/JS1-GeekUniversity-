@@ -64,6 +64,29 @@ label{
 .reset:active{
     background-color: green;
 }
+.console-link{
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    background-color: yellow;
+}
+.console-link:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+.console-link:active{
+    background-color: green;
+}
+
+
+
+
 .hidden{
     visibility: hidden;
 }
