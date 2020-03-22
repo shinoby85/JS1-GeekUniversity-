@@ -2,11 +2,10 @@ html{
     height: 100%;
 }
 body{
-    height: 100%;
+    min-height: 100%;
     background-image: url(../img/bg_img.jpg);
 }
 .container{
-    border: 1px solid #000;
     width: 1100px;
     margin: 0 auto;
     height: 100%;
@@ -20,6 +19,11 @@ body{
     border: 1px solid #000;
     border-radius: 20px;
     min-height: 50px;
+    
+}
+form{
+    margin: 0 auto;
+    min-width: 400px;
 
 }
 .tasks{
@@ -31,6 +35,61 @@ fieldset{
 legend{
     padding: 0 5px;
 }
+label{
+    float: left;
+    margin: 10px;
+}
+.result{
+    background-color: #fff;
+}
+.btn-submit,.reset{
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 100px;
+    padding: 5px;
+    margin: 10px;
+    float: left;
+    box-sizing: border-box;
+    color: #000;
+    font-weight: bold;
+    background-color: yellow;
+}
+.btn-submit:hover,
+.reset:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+.btn-submit:active,
+.reset:active{
+    background-color: green;
+}
+.console-link{
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    background-color: yellow;
+}
+.console-link:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+.console-link:active{
+    background-color: green;
+}
+table,tr,th,td{
+    border: 1px solid #000;
+    
+}
+
+
+
+
 .hidden{
     visibility: hidden;
 }
