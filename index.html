@@ -10,11 +10,28 @@
 </head>
 <body>
     <div class="container">
-
         <h1 class="title">Домашнее задание.</h1>
         <section class="lesson lesson1">
             <h2 class="tasks">Задание 1</h2>
-            
+            <p class="text">Задать температуру в градусах по Цельсию. Вывести в alert соответствующую температуру в
+                градусах по Фаренгейту. Подсказка: расчёт идёт по формуле:
+                Tf = (9 / 5) * Tc + 32, где Tf – температура по Фаренгейту, Tc – температура по Цельсию</p>
+            <form onsubmit="return findTemp();" onreset="return resetTemp();">
+                <fieldset>
+                    <legend>Решение</legend>
+                    <label>
+                        Значение Tc= 
+                        <input id="temp" type="text" class="input-temp" required placeholder="Числовое значение">
+                    </label>
+                    <label>
+                        Значение Tf=
+                        <input id="temp-result" type="text" class="result" readonly>
+                    </label>
+                    <input class="btn-submit" type="submit" value="Расчет">
+                    <input type="reset" class="reset">
+                </fieldset>
+
+            </form>
         </section>
         <section class="lesson lesson2 hidden">
             <h2 class="tasks"></h2>
