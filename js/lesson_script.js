@@ -1,5 +1,5 @@
 'use strict';
-
+//Для задания 1
 function findTemp(){
     let tC=document.getElementById('temp');
     if (!checkTemp(tC.value)) {
@@ -30,4 +30,13 @@ function resetTemp(){
         tempResult.style.backgroundColor='white';        
     }
     return rst;
+}
+
+//Для задания 2
+function changeData(){
+    let name= document.getElementById('name').value;
+    let admin=document.getElementById('admin');
+    admin.value=name;
+    console.log(admin.value);
+    return false;
 }

@@ -33,8 +33,26 @@
 
             </form>
         </section>
-        <section class="lesson lesson2 hidden">
-            <h2 class="tasks"></h2>
+        <section class="lesson lesson2">
+            <h2 class="tasks">Задание 2</h2>
+            <p class="text">Объявить две переменные: admin и name. Записать в name строку "Василий". Скопировать
+                значение из name в admin. Вывести в консоль переменную admin (должно вывести "Василий").</p>
+            <form onsubmit="return changeData();" onreset="return resetTemp();">
+                <fieldset>
+                    <legend>Решение</legend>
+                    <label>
+                        name=
+                        <input id="name" type="text" class="input-name" required>
+                    </label>
+                    <label>
+                        admin=
+                        <input id="admin" type="text" class="input-name" readonly>
+                    </label>
+                    <input class="btn-submit" type="submit" value="Копия">
+                    <input type="reset" class="reset">
+                </fieldset>
+
+            </form>
         </section>
         <section class="lesson lesson3 hidden">
             <h2 class="tasks"></h2>
