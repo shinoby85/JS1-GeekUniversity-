@@ -1,5 +1,6 @@
 'use strict';
 //Исполнение
+/*
 task_1(); 
 
 task_2();
@@ -8,11 +9,13 @@ let a=prompt("Введите значение первого числа");
 let b=prompt("Введите значение второго числа");
 console.log(`Результат операции равен: ${task_3(a,b)}`);
 
-    a=prompt("Введите значение первого числа");
-    b=prompt("Введите значение второго числа");
-    let c=prompt("Введите вид операции");
-    console.log(`Результат операции "${c}" равен: ${mathOperation(a,b,c)}`);
+a=prompt("Введите значение первого числа");
+b=prompt("Введите значение второго числа");
+let c=prompt("Введите вид операции");
+console.log(`Результат операции "${c}" равен: ${mathOperation(a,b,c)}`);*/
 
+let inputSum=prompt('Введите требуемую сумму');
+console.log(`Ваша сумма в ${inputSum} ${currency(inputSum)} успешно зачислена`);
 /**
  * Выполнение задания 1
  */
@@ -118,5 +121,29 @@ function mathOperation(arg1, arg2, operation){
             return divis(arg1,arg2);
         default:
             return 'Выбрана не допустимая операция';
+    }
+}
+/**
+ * Решение 6-ой задачи
+ * @param {*} coin Полученная сумма
+ * @returns {string} Склонение валюты
+ */
+function currency(coin){
+    if(coin=='')return 'Ошибка ввода данных';
+    let ind;
+    ind=String(coin%100);
+    let mas=ind.split('');
+    if(mas[0]!='1' && ind.length!=1){ //в случае если предпоследняя цифра числа равна 1 и не равна 0
+        ind=mas[1];
+    }     
+    switch(ind){
+        case '1':
+            return 'рубль';
+        case '2':
+        case '3':
+        case '4':
+            return 'рубля';
+        default:
+            return 'рублей';
     }
 }
