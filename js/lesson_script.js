@@ -1,10 +1,17 @@
 'use strict';
 //Исполнение
 task_1(); 
+
 task_2();
+
 let a=prompt("Введите значение первого числа");
 let b=prompt("Введите значение второго числа");
 console.log(`Результат операции равен: ${task_3(a,b)}`);
+
+    a=prompt("Введите значение первого числа");
+    b=prompt("Введите значение второго числа");
+    let c=prompt("Введите вид операции");
+    console.log(`Результат операции "${c}" равен: ${mathOperation(a,b,c)}`);
 
 /**
  * Выполнение задания 1
@@ -37,7 +44,7 @@ function task_2(){
 
 }
 /**
- * 
+ * Выполнение задания 3
  * @param {*} a Значение первого числа
  * @param {*} b Значение второго числа
  * @returns {string} Результат операции
@@ -58,4 +65,58 @@ function task_3(a,b){
         c=a+b;
     }
     return c;
+}
+//Выполнение задания 4
+/**
+ * Операция сложения
+ * @param {*} a Первый операнд
+ * @param {*} b Второй операнд
+ */
+function sum(a,b){
+    return Number(a)+Number(b);
+}
+/**
+ * Операция вычитания
+ * @param {*} a Первый операнд
+ * @param {*} b Второй операнд
+ */
+function subtr(a,b){
+    return a-b;
+}
+/**
+ * Операция умножения
+ * @param {*} a Первый операнд
+ * @param {*} b Второй операнд
+ */
+function multi(a,b){
+    return a*b;
+}
+/**
+ * Операция деления
+ * @param {*} a Первый операнд
+ * @param {*} b Второй операнд
+ */
+function divis(a,b){
+    return a/b;
+}
+/**
+ * Задание 5: выполнение арифметических действий на операндами
+ * @param {*} arg1 Первый аргумент операции
+ * @param {*} arg2 Второй аргумент операции
+ * @param {*} operation Вид операции
+ * @returns Результат выбранной операции
+ */
+function mathOperation(arg1, arg2, operation){
+    switch(operation){
+        case '+':
+            return sum(arg1,arg2);
+        case '-':
+            return subtr(arg1,arg2);
+        case '*':
+            return multi(arg1,arg2);
+        case '/':
+            return divis(arg1,arg2);
+        default:
+            return 'Выбрана не допустимая операция';
+    }
 }
