@@ -23,7 +23,9 @@ function task_1() {
     }
 }
 
-
+/**
+ * Вывод в консоль значеий из комментариев
+ */
 function task_2() {
     const post = {
         author: "John", //вывести этот текст
@@ -54,4 +56,21 @@ function task_2() {
     console.log(post.comments[0].rating.dislikes);
     console.log(post.comments[1].userId);
     console.log(post.comments[1].text);
+}
+
+function task_3() {
+    const products = [
+        {
+            id: 3,
+            price: 200,
+        },
+        {
+            id: 4,
+            price: 900,
+        },
+        {
+            id: 1,
+            price: 1000,
+        },
+    ];
 }
