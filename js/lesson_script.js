@@ -7,6 +7,8 @@ task_2();  //Второе задание
 
 task_3();  //Третье задание
 
+task_4();  //Четвертое задание
+
 /**
  * Вывод последовательности чисел
  */
@@ -59,6 +61,9 @@ function task_2() {
     console.log(post.comments[1].text);
 }
 
+/**
+ * Применение скидки 15%
+ */
 function task_3() {
     const products = [
         {
@@ -79,3 +84,60 @@ function task_3() {
         console.log(product.price);
     })
 }
+
+/**
+ *  Обработка данных товаров
+ */
+function task_4() {
+    const products = [
+        {
+            id: 3,
+            price: 127,
+            photos: [
+                "1.jpg",
+                "2.jpg",
+            ]
+        },
+        {
+            id: 5,
+            price: 499,
+            photos: []
+        },
+        {
+            id: 10,
+            price: 26,
+            photos: [
+                "3.jpg"
+            ]
+        },
+        {
+            id: 8,
+            price: 78,
+        },
+    ];
+
+    //Получение товаров у которых есть фото
+    let productsWithPhotos=products.filter(product=>{
+        if ("photos" in product) {
+            return product.photos.length > 0;
+        }
+        return false;
+    });
+    console.log(productsWithPhotos);
+
+    //Сортировка массива по значению стоимости
+    products.sort((a,b)=>{
+        if (a.price<b.price){
+            return -1;
+        }
+        else if(a.price>b.price){
+            return 1;
+        }
+        else
+            return 0;
+
+    });
+    console.log(products);
+}
+
+
