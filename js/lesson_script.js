@@ -5,6 +5,7 @@ task_1();  //Первое задание
 
 task_2();  //Второе задание
 
+task_3();  //Третье задание
 
 /**
  * Вывод последовательности чисел
@@ -73,4 +74,8 @@ function task_3() {
             price: 1000,
         },
     ];
+    products.forEach(function (product) {
+        product.price=product.price-(product.price*15/100);
+        console.log(product.price);
+    })
 }
