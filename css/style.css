@@ -38,7 +38,7 @@ legend{
     display: block;
     margin: 0 auto;
 }
-.button:hover{
+button:hover{
     cursor: pointer;
 }
 .new_window{
@@ -79,4 +79,21 @@ legend{
 }
 .hide{
     display: none;
+}
+.products{
+    display: flex;
+}
+.product{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 110px;
+}
+.img-bird{
+    margin-bottom: 10px;
+}
+.product-text{
+    width: 110px;
+    height: 150px;
+    margin-bottom: 10px;
 }
