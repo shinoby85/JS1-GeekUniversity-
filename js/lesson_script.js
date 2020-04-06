@@ -60,7 +60,7 @@ let createBoard=function () {
     field.classList.add('field');
     board.appendChild(field);
     createCell(field);
-
+    createChess(chess)
 };
 
 /**
@@ -102,10 +102,100 @@ function createCell(field){
             if ((i%2===0 && j%2!==0)||(i%2!==0 && j%2===0)){
                 cell.classList.add('cellBlack');
             }
+            else{
+                cell.classList.add('cellWhite');
+            }
             field.appendChild(cell);
         }
     }
 }
+
+
+function createChess(obj) {
+    for (let i = 1; i < 9; i++)
+        for (let j = 1; j < 9; j++) {
+            let str = String(i) + String(j);
+            let blokD = document.getElementById(`cell-${str}`);
+            console.log(blokD);
+            let elem = document.createElement('div');
+
+            elem.style.width = '40px';
+            elem.style.height = '40px';
+
+            if (String(i) === '2') {
+                elem.classList.add(obj.classWP);
+                elem.style.backgroundImage = obj.urlWPeshka;
+            }
+            if (String(i) === '7') {
+                elem.classList.add(obj.classBP);
+                elem.style.backgroundImage = obj.urlBPeshka;
+            }
+            switch (str) {
+                case '11':
+                case '18': {
+                    elem.classList.add(obj.classWL);
+                    elem.style.backgroundImage = obj.urlWLad;
+                }
+                    break;
+                case '12':
+                case '17': {
+                    elem.classList.add(obj.classWH);
+                    elem.style.backgroundImage = obj.urlWHorse;
+                }
+                    break;
+                case '13':
+                case '16': {
+                    elem.classList.add(obj.classWC);
+                    elem.style.backgroundImage = obj.urlWClon;
+                }
+                    break;
+                case '14': {
+                    elem.classList.add(obj.classWF);
+                    elem.style.backgroundImage = obj.urlWFerz;
+                }
+                    break;
+                case '15': {
+                    elem.classList.add(obj.classWKr);
+                    elem.style.backgroundImage = obj.urlWKing;
+                }
+                    break;
+                case '81':
+                case '88': {
+                    elem.classList.add(obj.classBL);
+                    elem.style.backgroundImage = obj.urlBLad;
+                }
+                    break;
+                case '82':
+                case '87': {
+                    elem.classList.add(obj.classBH);
+                    elem.style.backgroundImage = obj.urlBHorse;
+                }
+                    break;
+                case '83':
+                case '86': {
+                    elem.classList.add(obj.classWC);
+                    elem.style.backgroundImage = obj.urlBClon;
+                }
+                    break;
+                case '84': {
+                    elem.classList.add(obj.classBF);
+                    elem.style.backgroundImage = obj.urlBFerz;
+                }
+                    break;
+                case '85': {
+                    elem.classList.add(obj.classBKr);
+                    elem.style.backgroundImage = obj.urlBKing;
+                }
+                    break;
+            }
+            blokD.appendChild(elem);
+        }
+
+
+}
+
+
+
 
 
 btnBoard.addEventListener('click',createBoard);
