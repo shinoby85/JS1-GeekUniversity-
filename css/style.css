@@ -6,10 +6,9 @@ body{
     background-image: url(../img/bg_img.jpg);
 }
 .container{
-    border: 1px solid #000;
     width: 1100px;
     margin: 0 auto;
-    height: 100%;
+    min-height: 450px;
 }
 .title{
    text-align: center;
@@ -96,4 +95,96 @@ button:hover{
     width: 110px;
     height: 150px;
     margin-bottom: 10px;
+}
+.board-btn{
+    display: block;
+    margin: 10px auto;
+}
+.full-board {
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(33,1fr);
+    grid-template-rows: repeat(33,1fr);
+    border: 1px solid #000;
+    background-color: #fff;
+}
+.num-01,.num-02,.num-03,.num-04,.num-05,.num-06,
+.num-07,.num-08{
+    grid-row: 1/2;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.num-01{
+     grid-column: 2/6;    
+ }
+.num-02{
+    grid-column: 6/10;
+}
+.num-03{
+    grid-column: 10/14;
+}
+.num-04{
+    grid-column: 14/18;
+}
+.num-05{
+    grid-column: 18/22;
+}
+.num-06{
+    grid-column: 22/26;
+}
+.num-07{
+    grid-column: 26/30;
+}
+.num-08{
+    grid-column: 30/34;
+}
+.num-10,.num-20,.num-30,.num-40,.num-50,.num-60,
+.num-70,.num-80{
+    grid-column: 1/2;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.num-10{
+    grid-row: 30/34;
+}
+.num-20{
+    grid-row: 26/30;
+}
+.num-30{
+    grid-row: 22/26;
+}
+.num-40{
+    grid-row: 18/22;
+}
+.num-50{
+    grid-row: 14/18;
+}
+.num-60{
+    grid-row: 10/14;
+}
+.num-70{
+    grid-row: 6/10;
+}
+.num-80{
+    grid-row: 2/6;
+}
+.field{
+    grid-column: 2/34;
+    grid-row: 2/34;
+    border: 1px solid #000;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(8,1fr);
+}
+.cellBlack{
+    background-color: black;
 }
