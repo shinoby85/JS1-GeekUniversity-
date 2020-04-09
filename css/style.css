@@ -27,7 +27,14 @@ body{
 }
 fieldset{
     padding: 10px;
-}.products{
+}
+button:hover{
+    cursor: pointer;
+}
+.hide{
+    display: none;
+}
+.products{
      display: flex;
  }
 .product{
@@ -49,4 +56,11 @@ legend{
 }
 .hidden{
     visibility: hidden;
+}
+.next-btn{
+    margin-bottom: 10px;
+}
+.allPriceText{
+    font-size: 30px;
+    font-weight: 700;
 }
