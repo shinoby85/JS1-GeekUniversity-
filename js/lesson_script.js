@@ -1,6 +1,7 @@
 'use strict';
 
 let productsBtn = document.getElementsByClassName('next-btn');
+
 for (let i = 0; i < productsBtn.length; i++) {
     productsBtn[i].addEventListener('click', function () {
         let product = this.parentNode;
@@ -21,13 +22,40 @@ for (let i = 0; i < productsBtn.length; i++) {
 }
 
 
-let basket = [];
+/*
+
+
 let shopPosition = {
     id: null,
     name: null,
     count: null,
     price: null
 };
+function clearShopPosition() {
+    shopPosition.id = null;
+    shopPosition.name = null;
+    shopPosition.count = null;
+    shopPosition.price = null;
+}
+let basket = {
+    position: {},
+    addProduct: function (shopPosition) {
+        if (this.position[shopPosition.id] !== undefined) {
+            this.count++;
+        }
+        else {
+            this.position[shopPosition.id].id=shopPosition.id;
+            this.position[shopPosition.id].name=shopPosition.name;
+            this.position[shopPosition.id].count=shopPosition.count;
+            this.position[shopPosition.id].price=shopPosition.price;
+        }
+        clearShopPosition();
+
+    }
+};
+
+
+
 let products = document.getElementsByClassName('products')[0];
 let buttonsBuy = products.getElementsByClassName('buy');
 for (let i = 0; i < buttonsBuy.length; i++) {
@@ -37,35 +65,15 @@ for (let i = 0; i < buttonsBuy.length; i++) {
         shopPosition.name = product.querySelector('.productName').innerText;
         shopPosition.count = 1;
         shopPosition.price = Number(product.getElementsByClassName('price')[0].innerText);
-        addProduct();
-
+        basket.addProduct(shopPosition);
     });
 }
 
 
-
-
-
 function addProduct() {
-    if (basket.length !== 0) {
-        for (let i = 0; i < basket.length; i++) {
-            if (basket[i].id===shopPosition.id){
-                basket[i].count++;
-                return;
-            }
-        }
-    }
-    basket
-    clearShopPosition();
 
 }
-
-function clearShopPosition() {
- shopPosition.id=null;
- shopPosition.name=null;
- shopPosition.count= null;
- shopPosition.price=null;
-}
+*/
 
 
 
