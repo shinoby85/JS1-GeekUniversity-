@@ -1,35 +1,94 @@
 'use strict';
 
-let productsBtn = document.getElementsByClassName('next-btn');
-for (let i = 0; i < productsBtn.length; i++) {
-    productsBtn[i].addEventListener('click', function () {
-        let product = this.parentNode;
-        let img = product.querySelector('.img-bird');
-        let text = product.querySelector('.product-text');
-        if (this.name === 'btn-on') {
-            this.name = 'btn-off';
-            this.innerText = 'Отмена';
-            img.classList.add('hide');
-            text.classList.remove('hide');
-        } else {
-            this.name = 'btn-on';
-            this.innerText = 'Подробнее';
-            img.classList.remove('hide');
-            text.classList.add('hide');
+let basket;
+basket = {
+    products: {},
+    /**
+     * Добавляет данные о новом продукте в общий список
+     * @param shopPosition Передаваемые данные
+     */
+    addProduct: function (shopPosition) {
+        if (this.length !== 0 && this.products[shopPosition.id] !== undefined) {
+            this.products[shopPosition.id].count++;
+            return;
         }
-    });
-}
+        this.products[shopPosition.id] = {
+            name: shopPosition.name,
+            count: shopPosition.count,
+            price: shopPosition.price
+        };
+    },
+    /**
+     * Отрисовка шапки таблицы
+     */
+    paintTable: function () {
+        let blockBasket = document.getElementById('basket');
+        let addHeadTable = `
+            <table id="tbBasket">
+                <tr id="tbHead">
+                    <th>ID товара</th>
+                    <th>Наименование товара</th>
+                    <th>Стоимость за шт.</th>
+                    <th>Количество</th>
+                    <th>Общая стоимость</th>
+                </tr>
+            </table>
+        `;
+        blockBasket.insertAdjacentHTML("afterbegin",addHeadTable);
+    },
+    /**
+     * Добавление новых данных в таблицу
+     */
+    getDataToTable:function () {
+        for(let product in this.products) {
+            let tbBasket=document.getElementById('tbBasket');
+            let newPosition=`
+                <tr class="product-position">
+                    <td>${product}</td>
+                    <td>${this.products[product].name}</td>
+                    <td>${this.products[product].price}</td>
+                    <td>${this.products[product].count}</td>
+                    <td>${this.products[product].count*this.products[product].price}</td>
+                </tr>
+            `;
+            tbBasket.insertAdjacentHTML('beforeend',newPosition);
+        }
+    },
+    /**
+     * Удаление информации о старой версии к
+     */
+    clearTable:function () {
+        let tbBasket=document.getElementById('tbBasket');
+        if (tbBasket!=undefined){
+            tbBasket.parentNode.removeChild(tbBasket);
+        }
+    },
+    getAllSum:function () {
+        let prisePosition=document.getElementById('allPrice');
+        let allSum=0;
+        for(let product in this.products) {
+            let positionSum=this.products[product].count*this.products[product].price;
+            allSum+=positionSum;
+        }
+        prisePosition.innerText=allSum;
+    }
 
-
-let basket = [];
+};
 let shopPosition = {
     id: null,
     name: null,
     count: null,
-    price: null
+    price: null,
+    clearShopPosition: function () {
+        shopPosition.id=null;
+        shopPosition.name=null;
+        shopPosition.count= null;
+        shopPosition.price=null;
+    }
 };
 let products = document.getElementsByClassName('products')[0];
 let buttonsBuy = products.getElementsByClassName('buy');
+
 for (let i = 0; i < buttonsBuy.length; i++) {
     buttonsBuy[i].addEventListener('click', function (e) {
         let product = e.target.parentNode;
@@ -37,34 +96,13 @@ for (let i = 0; i < buttonsBuy.length; i++) {
         shopPosition.name = product.querySelector('.productName').innerText;
         shopPosition.count = 1;
         shopPosition.price = Number(product.getElementsByClassName('price')[0].innerText);
-        addProduct();
-
+        basket.addProduct(shopPosition);
+        shopPosition.clearShopPosition();
+        basket.clearTable();
+        basket.paintTable();
+        basket.getDataToTable();
+        basket.getAllSum();
     });
-}
-
-
-
-
-
-function addProduct() {
-    if (basket.length !== 0) {
-        for (let i = 0; i < basket.length; i++) {
-            if (basket[i].id===shopPosition.id){
-                basket[i].count++;
-                return;
-            }
-        }
-    }
-    basket
-    clearShopPosition();
-
-}
-
-function clearShopPosition() {
- shopPosition.id=null;
- shopPosition.name=null;
- shopPosition.count= null;
- shopPosition.price=null;
 }
 
 
