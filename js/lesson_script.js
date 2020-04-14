@@ -31,6 +31,7 @@ basket = {
                     <th>Стоимость за шт.</th>
                     <th>Количество</th>
                     <th>Общая стоимость</th>
+                     <th>Отмена</th>
                 </tr>
             </table>
         `;
@@ -44,11 +45,12 @@ basket = {
             let tbBasket=document.getElementById('tbBasket');
             let newPosition=`
                 <tr class="product-position">
-                    <td>${product}</td>
+                    <td class="product-id">${product}</td>
                     <td>${this.products[product].name}</td>
                     <td>${this.products[product].price}</td>
                     <td>${this.products[product].count}</td>
                     <td>${this.products[product].count*this.products[product].price}</td>
+                    <td><a href="" class="del-position">X</a></td>
                 </tr>
             `;
             tbBasket.insertAdjacentHTML('beforeend',newPosition);
@@ -71,6 +73,19 @@ basket = {
             allSum+=positionSum;
         }
         prisePosition.innerText=allSum;
+    },
+    eventForClearPosition: function(){
+        let clrButtons=document.getElementsByClassName('.del-position');
+        for (let i = 0; i < clrButtons.length; i++) {
+            clrButtons[i].addEventListener('click',event=>{
+                let trProduct=event.target.parentNode;
+                let idDelProduct=trProduct.getElementsByClassName('product-id');
+
+            })
+        }
+    },
+    clearPosition: function () {
+
     }
 
 };
