@@ -104,6 +104,9 @@ basket = {
                 this.paintTable();
                 this.getDataToTable();
                 this.getAllSum();
+                if ( event.cancelable ) { //  если событие может быть отменено и предотвращено
+                    event.preventDefault();
+                }
             });
         }
     },
@@ -146,6 +149,9 @@ for (let i = 0; i < buttonsBuy.length; i++) {
         shopPosition.price = Number(product.getElementsByClassName('price')[0].innerText);
         basket.runCreateBasket(shopPosition);
         shopPosition.clearShopPosition();
+        if ( e.cancelable ) { //  если событие может быть отменено и предотвращено
+            e.preventDefault();
+        }
     });
 }
 
