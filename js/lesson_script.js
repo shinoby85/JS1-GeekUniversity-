@@ -35,58 +35,91 @@ basket = {
                 </tr>
             </table>
         `;
-        blockBasket.insertAdjacentHTML("afterbegin",addHeadTable);
+        blockBasket.insertAdjacentHTML("afterbegin", addHeadTable);
     },
     /**
      * Добавление новых данных в таблицу
      */
-    getDataToTable:function () {
-        for(let product in this.products) {
-            let tbBasket=document.getElementById('tbBasket');
-            let newPosition=`
-                <tr class="product-position">
-                    <td class="product-id">${product}</td>
+    getDataToTable: function () {
+        for (let product in this.products) {
+            let tbBasket = document.getElementById('tbBasket');
+            let newPosition = `
+                <tr id="product-${product}">
+                    <td>${product}</td>
                     <td>${this.products[product].name}</td>
                     <td>${this.products[product].price}</td>
                     <td>${this.products[product].count}</td>
-                    <td>${this.products[product].count*this.products[product].price}</td>
+                    <td>${this.products[product].count * this.products[product].price}</td>
                     <td><a href="" class="del-position">X</a></td>
                 </tr>
             `;
-            tbBasket.insertAdjacentHTML('beforeend',newPosition);
+            if (this.products[product].count>0) {
+                tbBasket.insertAdjacentHTML('beforeend', newPosition);
+            }
         }
     },
     /**
      * Удаление информации о старой версии к
      */
-    clearTable:function () {
-        let tbBasket=document.getElementById('tbBasket');
-        if (tbBasket!=undefined){
+    clearTable: function () {
+        let tbBasket = document.getElementById('tbBasket');
+        if (tbBasket != undefined) {
             tbBasket.parentNode.removeChild(tbBasket);
         }
     },
-    getAllSum:function () {
-        let prisePosition=document.getElementById('allPrice');
-        let allSum=0;
-        for(let product in this.products) {
-            let positionSum=this.products[product].count*this.products[product].price;
-            allSum+=positionSum;
+    /**
+     * Удаление одной позиции из корзины
+     * @param idProduct ID удаляемого объекта
+     */
+    clearPosition: function (idProduct) {
+        if (this.products[idProduct].count > 1) {
+            this.products[idProduct].count--;
+        } else {
+            delete this.products[idProduct];
         }
-        prisePosition.innerText=allSum;
     },
-    eventForClearPosition: function(){
-        let clrButtons=document.getElementsByClassName('.del-position');
+    /**
+     * Получение общей суммы
+     */
+    getAllSum: function () {
+        let prisePosition = document.getElementById('allPrice');
+        let allSum = 0;
+        for (let product in this.products) {
+            let positionSum = this.products[product].count * this.products[product].price;
+            allSum += positionSum;
+        }
+        prisePosition.innerText = allSum;
+    },
+    /**
+     * Назначение обработки события на кнопку удаления позиции из корзины
+     */
+    eventForClearPosition: function () {
+        let clrButtons = document.getElementsByClassName('del-position');
         for (let i = 0; i < clrButtons.length; i++) {
-            clrButtons[i].addEventListener('click',event=>{
-                let trProduct=event.target.parentNode;
-                let idDelProduct=trProduct.getElementsByClassName('product-id');
-
-            })
+            clrButtons[i].addEventListener('click', event => {
+                let trProduct = event.target.parentNode.parentNode;
+                let idDelProduct = trProduct.id.split('-')[1];
+                this.clearPosition(idDelProduct);
+                this.clearTable();
+                this.paintTable();
+                this.getDataToTable();
+                this.getAllSum();
+            });
         }
     },
-    clearPosition: function () {
 
+    /**
+     * Запускает весь механизм работы корзины
+     */
+    runCreateBasket: function (shopPosition) {
+        this.addProduct(shopPosition);
+        this.clearTable();
+        this.paintTable();
+        this.getDataToTable();
+        this.getAllSum();
+        this.eventForClearPosition();
     }
+
 
 };
 let shopPosition = {
@@ -95,10 +128,10 @@ let shopPosition = {
     count: null,
     price: null,
     clearShopPosition: function () {
-        shopPosition.id=null;
-        shopPosition.name=null;
-        shopPosition.count= null;
-        shopPosition.price=null;
+        shopPosition.id = null;
+        shopPosition.name = null;
+        shopPosition.count = null;
+        shopPosition.price = null;
     }
 };
 let products = document.getElementsByClassName('products')[0];
@@ -111,12 +144,8 @@ for (let i = 0; i < buttonsBuy.length; i++) {
         shopPosition.name = product.querySelector('.productName').innerText;
         shopPosition.count = 1;
         shopPosition.price = Number(product.getElementsByClassName('price')[0].innerText);
-        basket.addProduct(shopPosition);
+        basket.runCreateBasket(shopPosition);
         shopPosition.clearShopPosition();
-        basket.clearTable();
-        basket.paintTable();
-        basket.getDataToTable();
-        basket.getAllSum();
     });
 }
 
