@@ -104,6 +104,7 @@ basket = {
                 this.paintTable();
                 this.getDataToTable();
                 this.getAllSum();
+                this.eventForClearPosition();
                 if ( event.cancelable ) { //  если событие может быть отменено и предотвращено
                     event.preventDefault();
                 }
